@@ -9,7 +9,10 @@
   </head>
   <body>
     <a id="google_link">googleへのリンク</a>
-    <div id="app">{{ message }}</div>
+    <div id="app">
+      {{ message }}
+      <a :href="google">googleへのリンク</a>
+    </div>
 
     <script>
       let app = new Vue({
@@ -17,6 +20,7 @@
         data() {
           return {
             message: "Hello Vue!",
+            google: "https://google.com"
           };
         },
       });
