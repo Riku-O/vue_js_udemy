@@ -13,10 +13,12 @@
       <a :href="google">googleへのリンク</a>
       <br />
       <a :href="book.url">{{ book.title }}</a>
-      <br>
-      <input v-bind="{name:formInput.name, placeholder:formInput.placeholder}">
-      <br>
-      <input v-bind="formInput">
+      <br />
+      <input
+        v-bind="{name:formInput.name, placeholder:formInput.placeholder}"
+      />
+      <br />
+      <input v-bind="formInput" />
     </div>
 
     <script>
@@ -32,8 +34,8 @@
             },
             formInput: {
               name: "your_name",
-              placeholder: "お名前を入力してください"
-            }
+              placeholder: "お名前を入力してください",
+            },
           };
         },
       });
