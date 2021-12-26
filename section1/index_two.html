@@ -8,19 +8,21 @@
     <title>Document</title>
   </head>
   <body>
-    <!--リアルDOM-->
-
     <!--仮想DOM-->
     <div id="app">
-      <div v-show="isDisplay">表示します</div>
-      <div v-show="!isDisplay">falseになっています</div>
+      <ul>
+        <li v-for="(member, index) in members">{{ index }} : {{ member }}</li>
+      </ul>
 
-      <div v-if="isDisplay">ifで表示</div>
+      <ul>
+        <li v-for="(value, key) in book">{{ key }} : {{ value }}</li>
+      </ul>
 
-      <div v-if="signal === 'red'">赤</div>
-      <div v-else-if="signal === 'yellow'">黄</div>
-      <div v-else-if="signal === 'blue'">青</div>
-      <div v-else>赤黄青ではありません</div>
+      <ul>
+        <li v-for="(value, key, index) in book">
+          {{ index }} : {{ key }} : {{ value }}
+        </li>
+      </ul>
     </div>
 
     <script>
@@ -28,8 +30,12 @@
         el: "#app",
         data() {
           return {
-            isDisplay: true,
-            signal: 'red'
+            members: ["本田", "香川", "長友"],
+            book: {
+              title: "タイトル",
+              author: "著者名",
+              url: "https://google.com",
+            },
           };
         },
       });
