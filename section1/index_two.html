@@ -6,34 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-    <style>
-      [v-cloak] {
-        display: none;
-      }
-    </style>
   </head>
   <body>
     <!--仮想DOM-->
-    <div id="app" v-cloak>
-      <div v-cloak>{{ test1 }}</div>
-      <div>{{ test2 }}</div>
+    <button onclick="btnClicked()">クリックしてね</button>
+    <div id="app">
+      <button @click="btnClicked">クリックしてね</button>
     </div>
 
     <script>
-      setTimeout(
-        () => [
-          new Vue({
-            el: "#app",
-            data() {
-              return {
-                test1: "v-cloakあり",
-                test2: "v-cloakなし",
-              };
-            },
-          }),
-        ],
-        3000
-      );
+      let app = new Vue({
+        el: "#app",
+        data() {
+          return {};
+        },
+        methods: {
+          btnClicked() {
+            console.log("Vue クリックされた");
+          },
+        },
+      });
+
+      function btnClicked() {
+        console.log("JS クリックされた");
+      }
     </script>
   </body>
 </html>
