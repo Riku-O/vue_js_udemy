@@ -8,8 +8,13 @@
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
   </head>
   <body>
+    <!-- Ajax -->
+    <form>
+      <button id="prevent" type="submit">送信</button>
+    </form>
+
     <!--仮想DOM-->
-    <button id="clickEvent" onclick="btnClicked()">クリックしてね</button>
+    <button id="prevent" onclick="btnClicked()">クリックしてね</button>
     <div id="app">
       <button @click="btnClicked">クリックしてね</button>
       <button @click="btnClickedEvent">Eventクリックしてね</button>
@@ -45,8 +50,9 @@
         console.log("JS クリックされた");
       }
 
-      const clickEvent = document.getElementById("clickEvent");
-      clickEvent.addEventListener("click", (e) => {
+      const prevent = document.getElementById("prevent");
+      prevent.addEventListener("click", (e) => {
+        e.preventDefault();
         console.log(e);
       });
     </script>
