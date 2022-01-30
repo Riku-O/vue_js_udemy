@@ -21,43 +21,44 @@
   </head>
   <body>
     <div id="app" class="parent">
-      <my-component title="テスト" class="child"></my-component>
-      <my-component :title="parentTitle" class="child"></my-component>
-      <my-component disabled class="child"></my-component>
+      <custom-input
+        @child-event="parentValue = $event"
+        class="child"
+      ></custom-input>
+      {{parentValue}}
     </div>
+
     <script>
-      let myComponent = {
+      let customInput = {
         template: `<div>
-          あああ
-          {{getTitle}}
-          <div v-show="isShow">表示</div>
+          <input type="text" v-model="childParam">
           </div>`,
-        props: {
-          title: {
-            type: String,
-          },
-          disabled: {
-            type: Boolean,
-            default: false,
-          },
-        },
         data() {
           return {
-            isShow: false,
-            getTitle: this.title,
+            childValue: "",
           };
+        },
+        computed: {
+          childParam: {
+            get() {
+              return this.childValue;
+            },
+            set(value) {
+              this.childValue = value;
+              this.$emit("child-event", value);
+            },
+          },
         },
       };
 
       let app = new Vue({
         el: "#app",
         components: {
-          // "my-component": myComponent,←この書き方が省略したものが↓
-          myComponent,
+          customInput,
         },
         data() {
           return {
-            parentTitle: "親側のタイトル",
+            parentValue: "",
           };
         },
       });
