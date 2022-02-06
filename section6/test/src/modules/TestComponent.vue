@@ -1,5 +1,5 @@
 <template>
-  <div>テストです {{ testData }}</div>
+  <div class="red-b">テストです {{ testData }}</div>
 </template>
 
 <script>
@@ -13,4 +13,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+.red-b {
+  border: red 1px solid;
+}
+</style>
