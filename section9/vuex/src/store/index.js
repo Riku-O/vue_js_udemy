@@ -7,6 +7,20 @@ export default new Vuex.Store({
   state: {
     // 初期値
     count: 0,
+    users: [
+      { id: 1, name: "小野寺", isVisible: true },
+      { id: 2, name: "佐藤", isVisible: true },
+      { id: 3, name: "田中", isVisible: true },
+    ],
+  },
+  getters: {
+    // visibleUsers(state) {
+    //   return state.users.filter((user) => user.isVisible);
+    // },
+    visibleUsers: (state) => state.users.filter((user) => user.isVisible),
+    getUserById: (state) => (id) => {
+      return state.users.find((user) => user.id === id);
+    },
   },
   mutations: {
     increment(state) {
@@ -28,6 +42,5 @@ export default new Vuex.Store({
       commit("addCount", payload);
     },
   },
-  getters: {},
   modules: {},
 });
