@@ -17,7 +17,17 @@ export default new Vuex.Store({
       state.count += payload.value;
     },
   },
-  actions: {},
+  actions: {
+    // incrementAction(context) {
+    //   context.commit("increment");
+    // },
+    incrementAction({ commit }) {
+      commit("increment");
+    },
+    addCountAction({ commit }, payload) {
+      commit("addCount", payload);
+    },
+  },
   getters: {},
   modules: {},
 });
